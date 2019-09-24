@@ -5,11 +5,11 @@
   // This is the dom node where we will keep our todo
   var container = document.getElementById('todo-container');
   var addTodoForm = document.getElementById('add-todo');
-
+  var RemoveStartingState=true;
   var state = [
-    { id: -3, description: 'first todo' },
-    { id: -2, description: 'second todo' },
-    { id: -1, description: 'third todo' },
+    { id: -3, description: 'first todo sample...' },
+    { id: -2, description: 'second todo sample...' },
+    { id: -1, description: 'third todo sample...' },
   ]; // this is our initial todoList
 
   // This function takes a todo, it returns the DOM node representing that todo
@@ -18,16 +18,18 @@
     // you will need to use addEventListener
 
     // add span holding description
-
+    var descriptionSpan = document.createElement('span');
+    descriptionSpan.textContent=todo.description;
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
     deleteButtonNode.addEventListener('click', function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
+    // add markTodo button
+    todoNode.appendChild(descriptionSpan);
     todoNode.appendChild(deleteButtonNode);
 
-    // add markTodo button
 
     // add classes for css
 
@@ -39,18 +41,24 @@
     addTodoForm.addEventListener('submit', function(event) {
       // https://developer.mozilla.org/en-US/docs/Web/Events/submit
       // what does event.preventDefault do?
+      event.preventDefault();
       // what is inside event.target?
 
-      var description = '?'; // event.target ....
-
+      var description = document.getElementById('task_description').value; // event.target ....
       // hint: todoFunctions.addTodo
-      var newState = []; // ?? change this!
+      document.getElementById('task_description').value = "";
+      var newState = todoFunctions.addTodo(state,description); // ?? change this!
+      if(RemoveStartingState){
+        RemoveStartingState=false;
+        newState= todoFunctions.addTodo([],description);
+      }
       update(newState);
     });
   }
 
   // you should not need to change this function
   var update = function(newState) {
+    console.log(newState);
     state = newState;
     renderState(state);
   };
