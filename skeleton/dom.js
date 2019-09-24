@@ -20,6 +20,7 @@
     // add span holding description
     var descriptionSpan = document.createElement('span');
     descriptionSpan.textContent=todo.description;
+    descriptionSpan.className="test";
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
     deleteButtonNode.addEventListener('click', function(event) {
@@ -27,6 +28,17 @@
       update(newState);
     });
     // add markTodo button
+    var markTodoNode = document.createElement('button');
+    markTodoNode.addEventListener('click', function(event) {
+      var newState = todoFunctions.markTodo(state, todo.id);
+      if(newState.filter(e=>e.id===todo.id)[0].hasOwnProperty('done')){
+        // markTodoNode.className="test";
+        descriptionSpan.className="test2";
+        console.log(newState);
+      }
+      update(newState);
+    });
+    todoNode.appendChild(markTodoNode);
     todoNode.appendChild(descriptionSpan);
     todoNode.appendChild(deleteButtonNode);
 
@@ -58,7 +70,7 @@
 
   // you should not need to change this function
   var update = function(newState) {
-    console.log(newState);
+
     state = newState;
     renderState(state);
   };
