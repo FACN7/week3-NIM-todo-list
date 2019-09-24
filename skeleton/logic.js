@@ -31,7 +31,6 @@ var todoFunctions = {
   addTodo: function(todos, newTodo) {
     var newTodos = this.cloneArrayOfObjects(todos);
     var newItem = [{ id: this.generateId(), description: newTodo }];
-    console.log(newItem);
     return newTodos.concat(newItem);
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // returns a new array, it should contain todos with the newTodo added to the end.
@@ -50,10 +49,9 @@ var todoFunctions = {
     // hint: array.map
   },
   sortTodos: function(todos, sortFunction) {
-    // stretch goal! Do this last
-    // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
-    // sortFunction will have same signature as the sort function in array.sort
-    // hint: array.slice, array.sort
+    var newTodos = this.cloneArrayOfObjects(todos);
+     sortFunction(newTodos);
+    return newTodos;
   },
 };
 
