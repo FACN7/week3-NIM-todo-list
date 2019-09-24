@@ -2,6 +2,12 @@
 // you can access these on todo.todoFunctions
 // For part one we expect you to use tdd
 
+var list = [
+  { id: 1, description: 'first todo' },
+  { id: 2, description: 'second todo' },
+  { id: 3, description: 'third todo' },
+];
+
 var todoFunctions = {
   // todoFunctions.generateId() will give you a unique id
   // You do not need to understand the implementation of this function.
@@ -11,7 +17,6 @@ var todoFunctions = {
     function incrementCounter() {
       return (idCounter += 1);
     }
-
     return incrementCounter;
   })(),
 
@@ -24,6 +29,10 @@ var todoFunctions = {
   },
 
   addTodo: function(todos, newTodo) {
+    var newTodos = this.cloneArrayOfObjects(todos);
+    var newItem = [{ id: this.generateId(), description: newTodo }];
+    console.log(newItem);
+    return newTodos.concat(newItem);
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // returns a new array, it should contain todos with the newTodo added to the end.
     // add an id to the newTodo. You can use the generateId function to create an id.
@@ -55,4 +64,5 @@ var todoFunctions = {
 // http://www.matteoagosti.com/blog/2013/02/24/writing-javascript-modules-for-both-browser-and-node/
 if (typeof module !== 'undefined') {
   module.exports = todoFunctions;
+
 }
