@@ -31,7 +31,6 @@ var todoFunctions = {
   addTodo: function(todos, newTodo) {
     var newTodos = this.cloneArrayOfObjects(todos);
     var newItem = [{ id: this.generateId(), description: newTodo }];
-    console.log(newItem);
     return newTodos.concat(newItem);
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // returns a new array, it should contain todos with the newTodo added to the end.
@@ -44,6 +43,9 @@ var todoFunctions = {
     // hint: array.filter
   },
   markTodo: function(todos, idToMark) {
+    var newTodos = this.cloneArrayOfObjects(todos);
+    newTodos.map(x => (x.id === idToMark && !x.hasOwnProperty('done')) ? (x.done = true) : (delete x.done));
+    return newTodos;
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // in the new todo array, all elements will remain unchanged except the one with id: idToMark
     // this element will have its done value toggled
