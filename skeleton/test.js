@@ -1,7 +1,9 @@
 var test = require('tape');
-// var logic  = require('./logic');
 const todoFunctions = require('./logic');
 
+function sortfunction(arr){
+return arr.reverse();
+}
 test('Example test', function(t) {
   t.pass();
   t.end();
@@ -47,23 +49,26 @@ test('Testing addTodo', function(t) {
 });
 
 
+test('Testing sortTodo', function(t) {
 
-// test('Testing sortTodos', function(t) {
-
-
-//     var actual = todoFunctions.addTodo(list, 'fourth todo');
-//   var expected = [
-//     { id: 1, description: 'first todo' },
-//     { id: 2, description: 'second todo' },
-//     { id: 3, description: 'third todo' },
-//     { id: 4, description: 'fourth todo' }
-//   ];
-//   t.deepEqual(actual, expected, 'Should return a list with added item');
-//   t.deepEqual(list, [
-//     { id: 1, description: 'first todo' },
-//     { id: 2, description: 'second todo' },
-//     { id: 3, description: 'third todo' },
-//   ],"constant array has not been altered");
-//   t.end();
-// });
+  var actual = todoFunctions.sortTodos(list,sortfunction);
+var expected = [
+  { id: 6, description: 'sixth todo' },
+  { id: 5, description: 'fifth todo' },
+  { id: 4, description: 'fourth todo' },
+  { id: 3, description: 'third todo' },
+  { id: 2, description: 'second todo' },
+  { id: 1, description: 'first todo' }
+];
+t.deepEqual(actual, expected, 'Should return a list reversed');
+t.deepEqual(list, [
+  { id: 1, description: 'first todo' },
+  { id: 2, description: 'second todo' },
+  { id: 3, description: 'third todo' },
+  { id: 4, description: 'fourth todo' },
+  { id: 5, description: 'fifth todo' },
+  { id: 6, description: 'sixth todo' }
+],"constant array has not been altered");
+t.end();
+});
 
