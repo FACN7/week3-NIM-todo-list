@@ -2,6 +2,12 @@
 // you can access these on todo.todoFunctions
 // For part one we expect you to use tdd
 
+var list = [
+  { id: 1, description: 'first todo' },
+  { id: 2, description: 'second todo' },
+  { id: 3, description: 'third todo' },
+];
+
 var todoFunctions = {
   // todoFunctions.generateId() will give you a unique id
   // You do not need to understand the implementation of this function.
@@ -11,7 +17,6 @@ var todoFunctions = {
     function incrementCounter() {
       return (idCounter += 1);
     }
-
     return incrementCounter;
   })(),
 
@@ -40,16 +45,18 @@ return newTodos;
     
   },
   markTodo: function(todos, idToMark) {
+    var newTodos = this.cloneArrayOfObjects(todos);
+    newTodos.map(x => (x.id === idToMark && !x.hasOwnProperty('done')) ? (x.done = true) : (delete x.done));
+    return newTodos;
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // in the new todo array, all elements will remain unchanged except the one with id: idToMark
     // this element will have its done value toggled
     // hint: array.map
   },
   sortTodos: function(todos, sortFunction) {
-    // stretch goal! Do this last
-    // should leave the input arguement todos unchanged (you can use cloneArrayOfObjects)
-    // sortFunction will have same signature as the sort function in array.sort
-    // hint: array.slice, array.sort
+    var newTodos = this.cloneArrayOfObjects(todos);
+     sortFunction(newTodos);
+    return newTodos;
   },
 };
 
@@ -60,4 +67,5 @@ return newTodos;
 // http://www.matteoagosti.com/blog/2013/02/24/writing-javascript-modules-for-both-browser-and-node/
 if (typeof module !== 'undefined') {
   module.exports = todoFunctions;
+
 }

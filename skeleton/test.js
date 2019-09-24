@@ -1,6 +1,9 @@
 var test = require('tape');
-var logic = require('./logic');
+const todoFunctions = require('./logic');
 
+function sortfunction(arr){
+return arr.reverse();
+}
 test('Example test', function(t) {
   t.pass();
   t.end();
@@ -17,6 +20,15 @@ var list = [
   { id: item2, description: 'second todo' },
   { id: item3, description: 'third todo' },
   { id: item4, description: 'fourth todo' },
+  { id: item5, description: 'fifth todo' },
+  { id: item6, description: 'sixth todo' }
+];
+
+var list2 = [
+  { id: item1, description: 'first todo' },
+  { id: item2, description: 'second todo' },
+  { id: item3, description: 'third todo' },
+  { id: item4, description: 'fourth todo', done: true  },
   { id: item5, description: 'fifth todo' },
   { id: item6, description: 'sixth todo' }
 ];
@@ -46,19 +58,63 @@ test('Testing addTodo', function(t) {
 });
 
 
-test('Testing deleteTodo id=1', function(t) {
+test('Testing markTodo adding part', function(t) {
+    var actual = todoFunctions.markTodo(list, 4);
+    var expected = [
+      { id: 1, description: 'first todo' },
+      { id: 2, description: 'second todo' },
+      { id: 3, description: 'third todo' },
+      { id: 4, description: 'fourth todo', done: true },
+      { id: 5, description: 'fifth todo' },
+      { id: 6, description: 'sixth todo' },
+    ];
+    t.deepEqual(actual, expected, 'Should add a done value if there was none');
+    t.deepEqual(list, [
+      { id: 1, description: 'first todo' },
+      { id: 2, description: 'second todo' },
+      { id: 3, description: 'third todo' },
+      { id: 4, description: 'fourth todo' },
+      { id: 5, description: 'fifth todo' },
+      { id: 6, description: 'sixth todo' }
+    ],"constant array has not been altered");
+    t.end();
+});
 
-var actual = todoFunctions.deleteTodo(list, 1);
+test('Testing markTodo removing', function(t) {
+    var actual = todoFunctions.markTodo(list2, 4);
+    var expected = [
+      { id: 1, description: 'first todo' },
+      { id: 2, description: 'second todo'},
+      { id: 3, description: 'third todo' },
+      { id: 4, description: 'fourth todo'},
+      { id: 5, description: 'fifth todo' },
+      { id: 6, description: 'sixth todo' },
+    ];
+    t.deepEqual(actual, expected, 'Should remove a done value if there was one');
+    t.end();
+});
+
+
+test('Testing sortTodo', function(t) {
+
+  var actual = todoFunctions.sortTodos(list,sortfunction);
 var expected = [
+  { id: 6, description: 'sixth todo' },
+  { id: 5, description: 'fifth todo' },
+  { id: 4, description: 'fourth todo' },
+  { id: 3, description: 'third todo' },
+  { id: 2, description: 'second todo' },
+  { id: 1, description: 'first todo' }
+];
+t.deepEqual(actual, expected, 'Should return a list reversed');
+t.deepEqual(list, [
+  { id: 1, description: 'first todo' },
   { id: 2, description: 'second todo' },
   { id: 3, description: 'third todo' },
   { id: 4, description: 'fourth todo' },
   { id: 5, description: 'fifth todo' },
-  { id: 6, description: 'sixth todo' },
-];
-
-t.deepEqual(actual, expected, 'Should return a list without deleted item');
-
+  { id: 6, description: 'sixth todo' }
+],"constant array has not been altered");
 t.end();
 });
 
@@ -73,7 +129,6 @@ test('Testing deleteTodo id=3', function(t) {
     { id: 5, description: 'fifth todo' },
     { id: 6, description: 'sixth todo' },
   ];
-  console.log(actual);
   
   t.deepEqual(actual, expected, 'Should return a list without deleted item');
   
@@ -83,5 +138,3 @@ test('Testing deleteTodo id=3', function(t) {
 
 
 
-
->>>>>>> Stashed changes
