@@ -30,7 +30,7 @@
       str=todo.description;
       var newState = todoFunctions.deleteTodo(state, todo.id);
 
-     var alertbox = document.querySelectorAll(".alert");     
+     var alertbox = document.querySelectorAll(".alert");
        alertbox [0].style.opacity=1;
 
        alertbox [0].innerText= str+' has deleted';
@@ -65,10 +65,11 @@
       if(editButtonNode.innerHTML===" EDIT"){
         editButtonNode.innerHTML=" DONE"
         descriptionSpan.contentEditable=true;
+        descriptionSpan.className = "task-item editing";
       }else{
         editButtonNode.innerHTML=" EDIT"
         descriptionSpan.contentEditable=false;
-
+        descriptionSpan.className = "task-item";
       }
     });
 
@@ -82,9 +83,11 @@
     // This function should mark a task as done by clicking on this task
 
     descriptionSpan.addEventListener('click', function(event) {
-      event.preventDefault();
-      var newState = todoFunctions.markTodo(state, todo.id);
-      update(newState);
+      if(!descriptionSpan.classList.contains("editing")){        
+        event.preventDefault();
+        var newState = todoFunctions.markTodo(state, todo.id);
+        update(newState);
+      }
     });
 
     // This function should mark a task as done by clicking on checkbox
