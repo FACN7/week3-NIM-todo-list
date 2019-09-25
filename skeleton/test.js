@@ -80,6 +80,20 @@ test('Testing markTodo adding part', function(t) {
     t.end();
 });
 
+test('Testing markTodo adding part for multiple', function(t) {
+    var actual = todoFunctions.markTodo(list2, 3);
+    var expected = [
+      { id: 1, description: 'first todo' },
+      { id: 2, description: 'second todo' },
+      { id: 3, description: 'third todo', done: true },
+      { id: 4, description: 'fourth todo', done: true },
+      { id: 5, description: 'fifth todo' },
+      { id: 6, description: 'sixth todo' },
+    ];
+    t.deepEqual(actual, expected, 'Should return an array with two Done objects');
+    t.end();
+});
+
 test('Testing markTodo removing', function(t) {
     var actual = todoFunctions.markTodo(list2, 4);
     var expected = [
@@ -129,12 +143,8 @@ test('Testing deleteTodo id=3', function(t) {
     { id: 5, description: 'fifth todo' },
     { id: 6, description: 'sixth todo' },
   ];
-  
+
   t.deepEqual(actual, expected, 'Should return a list without deleted item');
-  
+
   t.end();
   });
-
-
-
-

@@ -40,16 +40,19 @@ var todoFunctions = {
   deleteTodo: function(todos, idToDelete) {
     var newTodos = this.cloneArrayOfObjects(todos);
     newTodos = newTodos.filter(item => item.id != idToDelete);
-    return newTodos;    
+    return newTodos;
   },
   markTodo: function(todos, idToMark) {
     var newTodos = this.cloneArrayOfObjects(todos);
-    newTodos.map(x => (x.id === idToMark && !x.hasOwnProperty('done')) ? (x.done = true) : (delete x.done));
+    newTodos.map(x =>
+      { if(x.id === idToMark) {
+        if(!x.hasOwnProperty('done')) {
+        (x.done = true) }else{ (delete x.done);}
+      }});
+      
+
     return newTodos;
-    // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
-    // in the new todo array, all elements will remain unchanged except the one with id: idToMark
-    // this element will have its done value toggled
-    // hint: array.map
+
   },
   sortTodos: function(todos, sortFunction) {
     var newTodos = this.cloneArrayOfObjects(todos);

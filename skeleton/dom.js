@@ -21,7 +21,6 @@
     var descriptionSpan = document.createElement('span');
     descriptionSpan.textContent=todo.description;
     descriptionSpan.className = "task-item";
-    // descriptionSpan.className="test";
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
     deleteButtonNode.textContent = "Delete";
@@ -54,18 +53,20 @@
       descriptionSpan.className="task-item done";
     } else{
       markTodoNode.checked=false;
-      descriptionSpan.className="task-item in-progress";
+      descriptionSpan.className="task-item";
     }
     //add Edit Button
     var editButtonNode = document.createElement('button');
-      editButtonNode.innerHTML="x";
-      // editButtonNode.className="fas fa-pen";
+      editButtonNode.innerHTML=" EDIT";
+      editButtonNode.className="fas fa-pen edit-button";
+      // editButtonNode.className = "edit-button";
+
     editButtonNode.addEventListener('click', function(event) {
-      if(editButtonNode.innerHTML==="x"){
-        editButtonNode.innerHTML="v"
+      if(editButtonNode.innerHTML===" EDIT"){
+        editButtonNode.innerHTML=" DONE"
         descriptionSpan.contentEditable=true;
       }else{
-        editButtonNode.innerHTML="x"
+        editButtonNode.innerHTML=" EDIT"
         descriptionSpan.contentEditable=false;
 
       }
@@ -78,12 +79,11 @@
       }
     });
 
-    // markTodoNode.checked=false;
     markTodoNode.addEventListener('change', function(event) {
-      // event.preventDefault();
-       console.log(event.target.checked)
-
+      event.preventDefault();
     var newState = todoFunctions.markTodo(state, todo.id);
+    console.log(newState);
+    // state=newState
       update(newState);
     });
     todoNode.appendChild(descriptionSpan);
