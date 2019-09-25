@@ -79,6 +79,16 @@
       }
     });
 
+    // This function should mark a task as done by clicking on this task
+
+    descriptionSpan.addEventListener('click', function(event) {
+      event.preventDefault();
+      var newState = todoFunctions.markTodo(state, todo.id);
+      update(newState);
+    });
+
+    // This function should mark a task as done by clicking on checkbox
+
     markTodoNode.addEventListener('change', function(event) {
       event.preventDefault();
     var newState = todoFunctions.markTodo(state, todo.id);
