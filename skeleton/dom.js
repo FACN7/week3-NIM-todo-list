@@ -27,8 +27,22 @@
     deleteButtonNode.textContent = "Delete";
     deleteButtonNode.className = "delete-button";
     deleteButtonNode.addEventListener('click', function(event) {
+
+      str=todo.description;
       var newState = todoFunctions.deleteTodo(state, todo.id);
+
+     var alertbox = document.querySelectorAll(".alert");     
+       alertbox [0].style.opacity=1;
+
+       alertbox [0].innerText= str+' has deleted';
+      console.log(  alertbox );
+      setTimeout(function(){
+         alertbox [0].style.opacity=0;
+            }, 2000);
+
+
       update(newState);
+
     });
     // add markTodo button
     var markTodoNode = document.createElement('INPUT');
