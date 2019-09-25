@@ -1,17 +1,100 @@
-.test{
-
-  font-size: 100px;
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28px;
+  padding: 10% 15%;
+  font-family: 'Roboto', sans-serif;
+  background-image: url("https://i.pinimg.com/originals/74/1e/7c/741e7c69f28641fdb3a9cf0fb6072bfe.jpg");
+  /* background-color: #FFF3B0; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #335C67;
 }
-.test2{
 
-  font-size: 1000px;
+.app-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  padding-top: 0px;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
 }
 
-.CheckBox{
-
-width: 1000px;
+li {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0px;
 }
-.UncheckedCheckBox{
 
-color: white;
+ul {
+  width: 100%;
+}
+
+.delete-button {
+  flex: 1;
+  max-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  max-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  background-color: #9E2A2B;
+  border: none;
+  color: #FFF3B0;
+}
+
+.task-item {
+  display: inline-block;
+  flex: 3;
+  max-width: 50%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+
+.checker {
+  display: flex;
+  flex: 1;
+  transform: scale(2);
+}
+
+#todo-container {
+  width: 100%;
+  display: flex;
+  padding-right: 40px;
+  /* border: 1px solid black; */
+}
+
+#add-todo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: 40px;
+}
+
+#task_description {
+  width: 80%;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+}
+
+#button-add-task {
+  width: 150px;
+  height: 40px;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  background-color: #335C67;
+  color: #FFF3B0;
+  border: none;
+  margin-left: 10px;
+}
+
+.done {
+  text-decoration: line-through;
 }
