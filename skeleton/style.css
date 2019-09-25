@@ -27,6 +27,7 @@ li {
   display: flex;
   flex-direction: row;
   padding: 10px 0px;
+  justify-content: space-between;
 }
 
 ul {
@@ -39,20 +40,19 @@ ul {
   max-width: 100px;
   text-align: center;
   border-radius: 5px;
-  text-align: center;
-  border-radius: 5px;
   font-family: 'Roboto', sans-serif;
   font-size: 24px;
   background-color: #9E2A2B;
   border: none;
   color: #FFF3B0;
-  margin :5px;
+  margin: 5px;
+  cursor: pointer;
 }
 
 .task-item {
   display: inline-block;
   flex: 3;
-  max-width: 50%;
+  max-width: 70%;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -65,6 +65,19 @@ ul {
   margin: 10px;
   max-width: 5px;;
 
+}
+.edit-button {
+  max-height: 40px;
+  max-width: 100px;
+  text-align: center;
+  border-radius: 5px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+  background-color: #E09F3E;
+  border: none;
+  color: #335C67;
+  margin: 5px;
+  cursor: pointer;
 }
 
 #todo-container {
