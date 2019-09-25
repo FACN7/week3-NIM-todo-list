@@ -43,14 +43,16 @@
     }
     //add Edit Button
     var editButtonNode = document.createElement('button');
-      editButtonNode.innerHTML="x";
-      editButtonNode.className="fas fa-pen";
+      editButtonNode.innerHTML=" EDIT";
+      editButtonNode.className="fas fa-pen edit-button";
+      // editButtonNode.className = "edit-button";
+
     editButtonNode.addEventListener('click', function(event) {
-      if(editButtonNode.innerHTML==="x"){
-        editButtonNode.innerHTML="v"
+      if(editButtonNode.innerHTML===" EDIT"){
+        editButtonNode.innerHTML=" DONE"
         descriptionSpan.contentEditable=true;
       }else{
-        editButtonNode.innerHTML="x"
+        editButtonNode.innerHTML=" EDIT"
         descriptionSpan.contentEditable=false;
 
       }

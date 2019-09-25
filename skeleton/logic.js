@@ -40,7 +40,7 @@ var todoFunctions = {
   deleteTodo: function(todos, idToDelete) {
     var newTodos = this.cloneArrayOfObjects(todos);
     newTodos = newTodos.filter(item => item.id != idToDelete);
-    return newTodos;    
+    return newTodos;
   },
   markTodo: function(todos, idToMark) {
     var newTodos = this.cloneArrayOfObjects(todos);
@@ -50,6 +50,7 @@ var todoFunctions = {
         (x.done = true) }else{ (delete x.done);}
       }});
       
+
     return newTodos;
 
   },
