@@ -42,6 +42,27 @@
       markTodoNode.checked=false;
       descriptionSpan.className="task-item in-progress";
     }
+    //add Edit Button
+    var editButtonNode = document.createElement('button');
+      editButtonNode.innerHTML="x";
+      // editButtonNode.className="fas fa-pen";
+    editButtonNode.addEventListener('click', function(event) {
+      if(editButtonNode.innerHTML==="x"){
+        editButtonNode.innerHTML="v"
+        descriptionSpan.contentEditable=true;
+      }else{
+        editButtonNode.innerHTML="x"
+        descriptionSpan.contentEditable=false;
+
+      }
+    });
+
+    descriptionSpan.addEventListener('keypress',function(e){
+      if (event.keyCode == 13) {
+        event.preventDefault();
+        editButtonNode.click();
+      }
+    });
 
     // markTodoNode.checked=false;
     markTodoNode.addEventListener('change', function(event) {
@@ -54,6 +75,7 @@
     todoNode.appendChild(descriptionSpan);
     todoNode.appendChild(markTodoNode);
     todoNode.appendChild(deleteButtonNode);
+    todoNode.appendChild(editButtonNode);
 
 
     // add classes for css

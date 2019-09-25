@@ -36,9 +36,9 @@ ul {
 .delete-button {
   flex: 1;
   max-height: 40px;
+  max-width: 100px;
   text-align: center;
   border-radius: 5px;
-  max-height: 40px;
   text-align: center;
   border-radius: 5px;
   font-family: 'Roboto', sans-serif;
@@ -46,6 +46,7 @@ ul {
   background-color: #9E2A2B;
   border: none;
   color: #FFF3B0;
+  margin :5px;
 }
 
 .task-item {
@@ -59,8 +60,11 @@ ul {
 
 .checker {
   display: flex;
-  flex: 1;
+  /* flex: 1; */
   transform: scale(2);
+  margin: 10px;
+  max-width: 5px;;
+
 }
 
 #todo-container {
