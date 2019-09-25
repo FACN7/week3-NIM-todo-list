@@ -7,9 +7,11 @@
   var addTodoForm = document.getElementById('add-todo');
   var RemoveStartingState=true;
   var state = [
-    { id: -3, description: 'first todo sample...' },
-    { id: -2, description: 'second todo sample...' },
-    { id: -1, description: 'third todo sample...' },
+    { id: -1, description: 'Finding a completely legit version of a brand.' },
+    { id: -2, description: 'pre-prepared food, why buy regular old prepared food?' },
+    { id: -3, description: 'Any list that contains ammo, beer and Sudafed is a party I’m not going to.' },
+    { id: -4, description: 'Nice. Self-directed sarcasm, bad dogs. Keeping it real. And very alone.' },
+
   ]; // this is our initial todoList
 
   // This function takes a todo, it returns the DOM node representing that todo
@@ -65,11 +67,15 @@
       if(editButtonNode.innerHTML===" EDIT"){
         editButtonNode.innerHTML=" DONE"
         descriptionSpan.contentEditable=true;
-        descriptionSpan.className = "task-item editing";
+        descriptionSpan.className = "task-item editing";        
+        descriptionSpan.focus();
       }else{
         editButtonNode.innerHTML=" EDIT"
         descriptionSpan.contentEditable=false;
         descriptionSpan.className = "task-item";
+        todo.description=descriptionSpan.textContent;
+        descriptionSpan.blur();
+
       }
     });
 
@@ -120,14 +126,17 @@
 
       var description = document.getElementById('task_description').value; // event.target ....
       // hint: todoFunctions.addTodo
+      if(description!==""){
       document.getElementById('task_description').value = "";
       var newState = todoFunctions.addTodo(state,description); // ?? change this!
-      if(RemoveStartingState){
-        RemoveStartingState=false;
-        newState= todoFunctions.addTodo([],description);
-      }
+      // if(RemoveStartingState){
+      //   RemoveStartingState=false;
+      //   newState= todoFunctions.addTodo([],description);
+      // }
       update(newState);
+    }
     });
+
   }
 
   // you should not need to change this function

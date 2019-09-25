@@ -121,3 +121,9 @@ ul {
   /* box-shadow: 0px 0px 10px 10px white; */
   text-decoration: underline;
 }
+
+.task-item:focus{
+  outline: none !important;
+
+
+}
