@@ -45,6 +45,7 @@
     //add Edit Button
     var editButtonNode = document.createElement('button');
       editButtonNode.innerHTML="x";
+      editButtonNode.className = "edit-button";
       // editButtonNode.className="fas fa-pen";
     editButtonNode.addEventListener('click', function(event) {
       if(editButtonNode.innerHTML==="x"){
