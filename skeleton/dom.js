@@ -20,24 +20,27 @@
     // add span holding description
     var descriptionSpan = document.createElement('span');
     descriptionSpan.textContent=todo.description;
+    descriptionSpan.className = "task-item";
     // descriptionSpan.className="test";
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
+    deleteButtonNode.textContent = "Delete";
+    deleteButtonNode.className = "delete-button";
     deleteButtonNode.addEventListener('click', function(event) {
       var newState = todoFunctions.deleteTodo(state, todo.id);
       update(newState);
     });
     // add markTodo button
     var markTodoNode = document.createElement('INPUT');
+    markTodoNode.className = "checker";
     markTodoNode.setAttribute("type","checkbox");
     markTodoNode.id=todo.id;
     if(todo.hasOwnProperty('done')){
-    markTodoNode.checked=true;
-    descriptionSpan.className="test2";
-    }else{
+      markTodoNode.checked=true;
+      descriptionSpan.className="task-item done";
+    } else{
       markTodoNode.checked=false;
-      descriptionSpan.className="test";
-
+      descriptionSpan.className="task-item in-progress";
     }
     //add Edit Button
     var editButtonNode = document.createElement('button');
@@ -69,8 +72,8 @@
     var newState = todoFunctions.markTodo(state, todo.id);
       update(newState);
     });
-    todoNode.appendChild(markTodoNode);
     todoNode.appendChild(descriptionSpan);
+    todoNode.appendChild(markTodoNode);
     todoNode.appendChild(deleteButtonNode);
     todoNode.appendChild(editButtonNode);
 
