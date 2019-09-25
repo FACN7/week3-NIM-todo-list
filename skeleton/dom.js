@@ -20,7 +20,7 @@
     // add span holding description
     var descriptionSpan = document.createElement('span');
     descriptionSpan.textContent=todo.description;
-    descriptionSpan.className="test";
+    // descriptionSpan.className="test";
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
     deleteButtonNode.addEventListener('click', function(event) {
@@ -28,14 +28,24 @@
       update(newState);
     });
     // add markTodo button
-    var markTodoNode = document.createElement('button');
-    markTodoNode.addEventListener('click', function(event) {
-      var newState = todoFunctions.markTodo(state, todo.id);
-      if(newState.filter(e=>e.id===todo.id)[0].hasOwnProperty('done')){
-        // markTodoNode.className="test";
-        descriptionSpan.className="test2";
-        console.log(newState);
-      }
+    var markTodoNode = document.createElement('INPUT');
+    markTodoNode.setAttribute("type","checkbox")
+    markTodoNode.id=todo.id;
+    if(todo.hasOwnProperty('done')){
+    markTodoNode.checked=true;
+    descriptionSpan.className="test2";
+    }else{
+      markTodoNode.checked=false;
+      descriptionSpan.className="test";
+
+    }
+
+    // markTodoNode.checked=false;
+    markTodoNode.addEventListener('change', function(event) {
+      // event.preventDefault();
+       console.log(event.target.checked)
+
+    var newState = todoFunctions.markTodo(state, todo.id);
       update(newState);
     });
     todoNode.appendChild(markTodoNode);
