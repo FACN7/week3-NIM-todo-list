@@ -28,16 +28,14 @@
     var deleteButtonNode = document.createElement('button');
     deleteButtonNode.textContent = "Delete";
     deleteButtonNode.className = "delete-button";
-    deleteButtonNode.addEventListener('click', function(event) {
 
+
+    deleteButtonNode.addEventListener('click', function(event) {
       str=todo.description;
       var newState = todoFunctions.deleteTodo(state, todo.id);
-
      var alertbox = document.querySelectorAll(".alert");
        alertbox [0].style.opacity=1;
-
        alertbox [0].innerText= str+' has deleted';
-      console.log(  alertbox );
       setTimeout(function(){
          alertbox [0].style.opacity=0;
             }, 2000);
@@ -134,7 +132,13 @@
       //   RemoveStartingState=false;
       //   newState= todoFunctions.addTodo([],description);
       // }
-      update(newState);
+
+
+
+       update(newState);
+
+
+
     }
     });
 
@@ -142,8 +146,12 @@
 
   // you should not need to change this function
   var update = function(newState) {
+    state = newState;   
+    state.sort(function(a, b) {
+      return (b.id -a.id);
+  })
+    
 
-    state = newState;
     renderState(state);
   };
 
@@ -160,4 +168,13 @@
   };
 
   if (container) renderState(state);
+
+
+  // sortTodos(todos);
+console.log(state);
+  state.sort(function(a, b) {
+    return (a.id -b.id);
+})
+console.log(state);
+
 })();

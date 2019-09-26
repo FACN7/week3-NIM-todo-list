@@ -56,6 +56,9 @@ var todoFunctions = {
   },
   sortTodos: function(todos, sortFunction) {
     var newTodos = this.cloneArrayOfObjects(todos);
+    console.log('foo');
+    console.log('newTodos');
+
      sortFunction(newTodos);
     return newTodos;
   },
