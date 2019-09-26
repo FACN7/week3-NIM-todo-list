@@ -20,9 +20,10 @@
     // you will need to use addEventListener
 
     // add span holding description
-    var descriptionSpan = document.createElement('span');
+    var descriptionSpan = document.createElement('label');
     descriptionSpan.textContent=todo.description;
     descriptionSpan.className = "task-item";
+    descriptionSpan.for = todo.id;
     // this adds the delete button
     var deleteButtonNode = document.createElement('button');
     deleteButtonNode.textContent = "Delete";
@@ -65,7 +66,7 @@
       if(editButtonNode.innerHTML===" EDIT"){
         editButtonNode.innerHTML=" DONE"
         descriptionSpan.contentEditable=true;
-        descriptionSpan.className = "task-item editing";        
+        descriptionSpan.className = "task-item editing";
         descriptionSpan.focus();
       }else{
         editButtonNode.innerHTML=" EDIT"
@@ -87,7 +88,7 @@
     // This function should mark a task as done by clicking on this task
 
     descriptionSpan.addEventListener('click', function(event) {
-      if(!descriptionSpan.classList.contains("editing")){        
+      if(!descriptionSpan.classList.contains("editing")){
         event.preventDefault();
         var newState = todoFunctions.markTodo(state, todo.id);
         update(newState);
