@@ -13,14 +13,15 @@ body {
 }
 
 .app-container {
-  display: flex;
-  width: 100%;
+  
+  width: 110%;
   flex-direction: column;
   align-items: center;
   padding: 30px;
   padding-top: 0px;
   background-color: rgba(255, 255, 255, 0.6);
   border-radius: 20px;
+
 }
 
 li {
@@ -82,11 +83,25 @@ ul {
 }
 
 #todo-container {
-  width: 100%;
   display: flex;
   padding-right: 40px;
   /* border: 1px solid black; */
 }
+
+.scrolling{
+  overflow: auto;
+  max-height: 30vh;
+  width: 100%;
+}
+
+@media only screen and (max-width: 700) {
+  .scrolling {
+    overflow: visible;
+    max-height: 30vh;
+    width: 100%;  }
+}
+
+
 
 #add-todo {
   width: 100%;
