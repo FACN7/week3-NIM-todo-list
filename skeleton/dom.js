@@ -49,7 +49,7 @@
     markTodoNode.className = "checker";
     markTodoNode.setAttribute("type","checkbox");
     markTodoNode.id=todo.id;
-    if(todo.hasOwnProperty('done')){
+    if(todo.done === true){
       markTodoNode.checked=true;
       descriptionSpan.className="task-item done";
     } else{
@@ -146,11 +146,11 @@
 
   // you should not need to change this function
   var update = function(newState) {
-    state = newState;   
+    state = newState;
     state.sort(function(a, b) {
       return (b.id -a.id);
   })
-    
+
 
     renderState(state);
   };
