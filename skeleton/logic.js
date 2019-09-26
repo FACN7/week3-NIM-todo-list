@@ -3,9 +3,9 @@
 // For part one we expect you to use tdd
 
 var list = [
-  { id: 1, description: 'first todo' },
-  { id: 2, description: 'second todo' },
-  { id: 3, description: 'third todo' },
+  { id: 1, description: 'first todo', done: false },
+  { id: 2, description: 'second todo', done: false },
+  { id: 3, description: 'third todo', done: false },
 ];
 
 var todoFunctions = {
@@ -30,7 +30,7 @@ var todoFunctions = {
 
   addTodo: function(todos, newTodo) {
     var newTodos = this.cloneArrayOfObjects(todos);
-    var newItem = [{ id: this.generateId(), description: newTodo }];
+    var newItem = [{ id: this.generateId(), description: newTodo, done: false }];
     return newTodos.concat(newItem);
     // should leave the input argument todos unchanged (you can use cloneArrayOfObjects)
     // returns a new array, it should contain todos with the newTodo added to the end.
@@ -46,10 +46,10 @@ var todoFunctions = {
     var newTodos = this.cloneArrayOfObjects(todos);
     newTodos.map(x =>
       { if(x.id === idToMark) {
-        if(!x.hasOwnProperty('done')) {
-        (x.done = true) }else{ (delete x.done);}
+        if(x.done !== true) {
+        (x.done = true) }else{ (x.done = false);}
       }});
-      
+
 
     return newTodos;
 

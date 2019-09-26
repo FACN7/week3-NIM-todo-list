@@ -4,11 +4,13 @@
   "description": "",
   "main": "dom.js",
   "scripts": {
+    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov --token='6990d7df-66bd-43c9-959c-879ee4b3e4a0'",
     "test": "tape test.js | tap-spec"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "nyc": "^14.1.1",
     "tap-spec": "^5.0.0",
     "tape": "^4.11.0"
   }
