@@ -2,6 +2,8 @@
 
 Hi again!
 Check our new project out by the [Link](https://facn7.github.io/week3-NIM-todo-list/)
+
+
 ![WelcomeDance](https://media.giphy.com/media/3o7TKDEhaHWJpBs2Xu/giphy.gif)
 
 ### `about the project`
@@ -14,9 +16,9 @@ Check our new project out by the [Link](https://facn7.github.io/week3-NIM-todo-l
 You can clone the repo by typing the command
 
 ```console
-git clone https://github.com/FACN7/week3-NIM-todo-list.git
-cd week3-NIM-todo-list
-google-chrome index.html
+> git clone https://github.com/FACN7/week3-NIM-todo-list.git
+> cd week3-NIM-todo-list
+> google-chrome index.html
 ```
 
 ### `how to use`
@@ -31,14 +33,14 @@ google-chrome index.html
 Install tape and tap-spec
 
 ```console
-npm i tape -D
-npm i tap-spec -D
+> npm i tape -D
+> npm i tap-spec -D
 ```
 
 Run the test command
 
 ```console
-npm test
+> npm test
 ```
 
 ### `Stretch goals completed`
