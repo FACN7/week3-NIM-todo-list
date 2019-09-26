@@ -7,10 +7,10 @@
   var addTodoForm = document.getElementById('add-todo');
   var RemoveStartingState=true;
   var state = [
-    { id: -1, description: 'Finding a completely legit version of a brand.' },
-    { id: -2, description: 'pre-prepared food, why buy regular old prepared food?' },
-    { id: -3, description: 'Any list that contains ammo, beer and Sudafed is a party I’m not going to.' },
-    { id: -4, description: 'Nice. Self-directed sarcasm, bad dogs. Keeping it real. And very alone.' },
+    { id: -1, description: 'Finding a completely legit version of a brand.', done: false },
+    { id: -2, description: 'pre-prepared food, why buy regular old prepared food?', done: false },
+    { id: -3, description: 'Any list that contains ammo, beer and Sudafed is a party I’m not going to.', done: false },
+    { id: -4, description: 'Nice. Self-directed sarcasm, bad dogs. Keeping it real. And very alone.', done: false },
 
   ]; // this is our initial todoList
 
